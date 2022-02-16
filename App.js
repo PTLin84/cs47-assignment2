@@ -1,12 +1,15 @@
-import AppLoading from 'expo-app-loading';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
-import { useFonts } from 'expo-font';
-import { Themes } from './assets/Themes';
+import AppLoading from "expo-app-loading";
+import { StyleSheet, Text, View, StatusBar, Image } from "react-native";
+import { useFonts } from "expo-font";
+import { Themes } from "./assets/Themes";
+import TopNavBar from "./components/TopNavBar";
+import BotNavBar from "./components/BotNavBar";
+import Content from "./components/Content";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
-    Sydney: require('./assets/Fonts/Sydney-Serial-Regular.ttf'),
-    'Sydney-Bold': require('./assets/Fonts/Sydney-Serial-Bold.ttf'),
+    Sydney: require("./assets/Fonts/Sydney-Serial-Regular.ttf"),
+    "Sydney-Bold": require("./assets/Fonts/Sydney-Serial-Bold.ttf"),
   });
   if (!fontsLoaded) return <AppLoading />;
   /* ^Don't mind/edit the code above, it's there to load the font for you! */
@@ -14,21 +17,12 @@ export default function App() {
   /* ^Don't mind/edit this one either unless you decide to do the dark theme one, in that case, you will have to change it accordingly*/
 
   /* insert your code here */
-
+  //   fontFamily: 'Sydney', 'Sydney-Bold' // test to see if the font is loaded, feel free to remove this
   return (
     <View style={styles.container}>
-      <Text
-        style={{
-          fontFamily: 'Sydney', // test to see if the font is loaded, feel free to remove this
-        }}>
-        Open up App.js to start working on your app!
-      </Text>
-      <Text
-        style={{
-          fontFamily: 'Sydney-Bold', // test to see if the font is loaded, feel free to remove this
-        }}>
-        ~Good luck~
-      </Text>
+      <TopNavBar />
+      <Content />
+      <BotNavBar />
     </View>
   );
 }
@@ -36,8 +30,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#f7f7f7",
+    justifyContent: "space-between",
+    alignItems: "stretch",
+    flexDirection: "column",
   },
 });
